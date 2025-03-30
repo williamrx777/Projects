@@ -1,0 +1,41 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg shadow" style="background-color: white;">
+    <div class="container">
+        <a class="ver-mais-link" href="{% url 'home' %}">        
+            <img src="{% static 'LOGO_NOVO_GMR.png' %}" alt="logo" height="70px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNav">
+            <div class="col-lg-6 col-12 d-flex flex-column align-items-lg-end align-items-end justify-content-end">
+                <span id="data"></span>
+                <span id="hora"></span>
+                <div class="mt-2 mt-lg-0">
+                    <a class="btn btn-outline-dark btn-sm ver-mais-link mt-2" href="{% url 'lista' %}">Pagina Inicial</a>
+                    <a class="btn btn-outline-danger btn-sm ver-mais-link mt-2" href="{% url 'sair' %}">Sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container-fluid text-center">
+        <div class="btn-group flex-wrap justify-content-center" role="group" aria-label="Basic example">
+            <a href="{% url 'cadastroDepartamento' %}" class="btn btn-outline-dark m-1" style="width: 130px;">Novo Departamento</a>
+            <a href="{% url 'cadastroFuncionario' %}" class="btn btn-outline-dark m-1" style="width: 130px;">Novo Funcionario</a>
+            {% if user.is_authenticated and user.is_superuser %}
+            <a href="{% url 'cadastroAdministrador' %}" class="btn btn-outline-dark m-1" style="width: 130px;"> Novo Administração</a>
+            {% endif %}
+            <a href="{% url 'listaDepartamento' %}" class="btn btn-outline-dark m-1" style="width: 130px;">Lista Departamento</a>
+            <a href="{% url 'listaFuncionario' %}" class="btn btn-outline-dark m-1" style="width: 130px;">Lista Funcionario</a>
+            {% if user.is_authenticated and user.is_superuser %}
+            <a href="{% url 'listaAdministrador' %}" class="btn btn-outline-dark m-1" style="width: 130px;">Lista Administração</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+<hr />

@@ -1,0 +1,67 @@
+{%  extends 'base.html' %}
+
+
+
+{% block main_content %}
+<style>
+     
+
+        .welcome-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .welcome-message p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        #saudacao {
+            font-size: 24px;
+            font-weight: bold;
+        }
+</style>
+<div style="height: 300px">
+     <div class="welcome-container ">
+          <div class="welcome-message">
+               <h1>Bem Vindo,</h1>
+              <h3  id="saudacao"></h3>
+              
+          </div>
+      </div>
+</div>
+
+<script>
+    var saudacaoDiv = document.getElementById('saudacao');
+
+    function updateGreeting() {
+        var user = {
+            username: "{{user.username}}",
+            last_login: new Date() // Supondo que last_login seja uma data
+        };
+
+        var hora = user.last_login.getHours();
+        var saudacao;
+
+        if (hora < 12) {
+            saudacao = 'Bom dia';
+        } else if (hora < 18) {
+            saudacao = 'Boa tarde';
+        } else {
+            saudacao = 'Boa noite';
+        }
+
+        saudacaoDiv.textContent = saudacao + ', ' + user.username;
+    }
+
+    // Atualiza a saudação inicialmente
+    updateGreeting();
+
+    // Define um intervalo para atualizar a saudação a cada minuto
+    setInterval(updateGreeting, 86400000); // Atualiza a cada 1 minuto (86400000 milissegundos)
+</script>
+
+{% endblock %}

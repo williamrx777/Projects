@@ -1,0 +1,43 @@
+{%  extends 'base.html' %}
+{% block main_content %}
+<p>
+    Utilize o formulário abaixo para efetuar o cadastro
+    do departamento.
+</p>
+
+<form method="POST" action="{% url 'cadastrarDepartamento' %}" style="height: 300px">
+
+    {% csrf_token %}
+    {{ formDepartamento.id }}
+
+    <div class="form-group row">
+        <label for="id_nome" class="col-sm-1">
+           {{ formDepartamento.nome.label }}
+        </label>
+
+        <div class="col-sm-5">
+         {{ formDepartamento.nome }}
+        </div>
+   </div>
+
+    <div class="form-group row">
+        <div class="col-sm-1">
+        </div>
+        {% if formDepartamento.nome.value %}
+            <div class="col-sm-5">
+                <input type="submit" value="Atualizar" class="form-control btn btn-primary" />
+            </div>
+        {% else %}
+            <div class="col-sm-5">
+                <input type="submit" value="Cadastrar" class="form-control btn btn-primary" />
+            </div>
+        {% endif %}
+    </div>
+
+
+</form>
+
+{% if msg %} {{ msg }} {% endif %}
+
+
+{% endblock %}

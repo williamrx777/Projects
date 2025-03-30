@@ -1,0 +1,136 @@
+body {
+    /* background: #e6e6e6; */
+    background-color: #e7e7e7;
+    font-family: Arial, sans-serif;
+    color: #656565;
+}
+a {
+    text-decoration: none;
+}
+ul, ul * {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#data {
+    font-size: 18px;
+    font-weight:bold;
+}
+#hora {
+    font-size: 18px;
+    font-weight:bold;
+}
+h5 {
+    text-transform: uppercase;
+    font-size: 10pt;
+    font-weight: 700;
+    /* color: rgb(17, 6, 119); */
+    color: #343434;
+}
+a:hover {
+    color: #343434;
+}
+.space {
+    border-top: none!important;
+    background: transparent;
+    border-bottom: 2px dashed #656565!important;
+    /* border-style: dashed;
+    border-color: #656565!important; */
+    /* border-width: 1px; */
+    width: calc(100% - 10px);
+    margin: 0 5px;
+}
+.list-name, .list-ramal {
+    /* color: rgb(36, 36, 36); */
+    color: #656565;
+    text-transform: uppercase;
+    font-size: 10pt;
+    line-height: 16pt;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all .3s ease-in
+}
+.list-name:hover, .list-ramal:hover {
+    cursor: pointer;
+    color: #343434;
+} 
+
+.bg-primary-gmr-gradient {
+    /* background-image: linear-gradient(to bottom, rgb(195, 195, 195), rgb(255, 255, 255)); */
+    /* background: #e2e2e2; */
+    background: #f6f6f6;
+}
+
+.list-sociais {
+    list-style: none!important;
+    margin: 0;
+    padding: 0;
+}
+.list-sociais li {
+    margin: 0;
+    padding: 0;
+}
+.list-sociais li a i {
+    color: #fff;
+    font-size: 22px;
+}
+.list-sociais li:hover a i {
+    color: #656565;
+}
+
+
+.card.bg-light {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none;
+}
+
+.list-group-item span {
+    font-size: 1rem;
+}
+
+.badge {
+    font-size: 0.9rem;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.botao {
+    background-color: #343434;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 15px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pesquisar {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin:5px;
+    font-size: 1rem;
+    width: 200px;
+    background-color: #f6f6f6;
+}
+
+
+
+/* #ffffff
+#e7e7e7
+#ababab
+#656565
+#000000 */

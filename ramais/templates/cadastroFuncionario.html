@@ -1,0 +1,70 @@
+{%  extends 'base.html' %}
+{% block main_content %}
+
+
+<p>
+    Utilize o formulário abaixo para efetuar o cadastro
+    do funcionario.
+</p>
+
+<form method="POST" action="{% url 'cadastrarFuncionario' %}" style="height: 300px">
+
+    {% csrf_token %}
+    {{ formFuncionario.id }}
+
+    <div class="form-group row">
+        <label for="id_nome" class="col-sm-1">
+           {{ formFuncionario.nome.label }}
+        </label>
+
+        <div class="col-sm-5">
+         {{ formFuncionario.nome }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id_ramal" class="col-sm-1">
+            {{ formFuncionario.ramal.label }}
+         </label>
+        <div class="col-sm-5">
+         {{ formFuncionario.ramal }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id_email" class="col-sm-1">
+            {{ formFuncionario.email.label }}
+         </label>
+     <div class="col-sm-5">
+         {{ formFuncionario.email }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id_departamentoId" class="col-sm-1">
+            {{ formFuncionario.departamentoId.label }}
+         </label>
+     <div class="col-sm-5">
+         {{ formFuncionario.departamentoId }}
+        </div>
+   </div>
+   <div class="form-group row">
+    <div class="col-sm-1">
+    </div>
+     <div class="col-sm-5">
+        {% if formFuncionario.nome.value %}
+        <div class="col-sm-5">
+            <input type="submit" value="Atualizar" class="form-control btn btn-primary" />
+        </div>
+    {% else %}
+        <div class="col-sm-5">
+            <input type="submit" value="Cadastrar" class="form-control btn btn-primary" />
+        </div>
+    {% endif %}
+     
+   </div>
+   </div>
+
+</form>
+
+{% if msg %} {{ msg }} {% endif %}
+
+
+{% endblock %}

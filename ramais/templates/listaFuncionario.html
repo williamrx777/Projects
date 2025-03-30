@@ -1,0 +1,66 @@
+{%  extends 'base.html' %}
+{% block main_content %}
+
+{% if msg %} {{ msg }} {% endif %}
+
+<div class="container-fluid ">
+    
+    <form action="{% url 'listaFuncionario' %}" method="get"  >
+        <input type="text" name="nome" placeholder="Buscar por funcionario..." class="form-control-plaintext">
+       
+    </form>
+</div>
+{% if funcionario or funcionario|length > 0 %}
+<table  class="table table-bordered table-striped table-dark table-sm">
+    <tr align="center">
+        <th><a href="#" onclick="toggleOrdenacao('id')">Id <span id="ordenacao_id">{% if ordenacao_estado == 'asc' %}(asc){% else %}(desc){% endif %}</span></a></th>
+        <th><a href="#" onclick="toggleOrdenacao('nome')">Nome <span id="ordenacao_nome">{% if ordenacao_estado == 'asc' %}(asc){% else %}(desc){% endif %}</span></a></th>
+        <th><a href="#" onclick="toggleOrdenacao('ramal')">Ramal <span id="ordenacao_ramal">{% if ordenacao_estado == 'asc' %}(asc){% else %}(desc){% endif %}</span></a></th>
+        <th><a href="#" onclick="toggleOrdenacao('email')">Email <span id="ordenacao_email">{% if ordenacao_estado == 'asc' %}(asc){% else %}(desc){% endif %}</span></a></th>
+        <th><a href="#" onclick="toggleOrdenacao('departamentoId')">Departamento <span id="ordenacao_departamentoId">{% if ordenacao_estado == 'asc' %}(asc){% else %}(desc){% endif %}</span></a></th>
+        <th> Operações </th>
+    </tr>
+    {% for funcionario in funcionario %}
+     <tr align="center">
+        <td> {{ funcionario.id }} </td>
+        <td> {{ funcionario.nome }} </td>
+        <td> {{ funcionario.ramal }} </td>
+        <td> {{ funcionario.email }} </td>
+        <td> {{ funcionario.departamentoId }} </td>
+        <td> <a href="{% url 'excluirFuncionario' id=funcionario.id %}"
+         onclick="return window.confirm('Deseja realmente excluir ? ');"
+        class="btn btn-danger btn-sm">Excluir </a> |
+             <a href="{% url 'alterarFuncionario' id=funcionario.id %}"
+             class="btn btn-warning btn-sm">Alterar </a></td>
+
+
+     </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+<p> Não há funcionario cadastrados.</p>
+{% endif %}
+
+
+
+
+<script>
+    function toggleOrdenacao(campo) {
+        var span = document.getElementById('ordenacao_' + campo);
+        var atual = span.textContent;
+        var proximo = (atual === '(asc)') ? '(desc)' : '(asc)';
+        span.textContent = proximo;
+        var url = window.location.href;
+        var indice = url.indexOf('ordenacao=');
+        if (indice !== -1) {
+            var novoUrl = url.substring(0, indice + 10) + (atual === '(asc)' ? '-' : '') + campo;
+            window.location.href = novoUrl;
+        } else {
+            window.location.href = url + (url.includes('?') ? '&' : '?') + 'ordenacao=' + (atual === '(asc)' ? '-' : '') + campo;
+        }
+    }
+</script>
+
+{% endblock %}
+
