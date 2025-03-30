@@ -1,0 +1,25 @@
+{% extends "login.html" %}
+
+
+{% block body %}
+{% include "navbar.html" %}
+
+  <body>
+    <div class="container">
+      <div class="conteudo">
+          {% for foto in foto %}
+        {% if foto.usuario_id == user.id %}
+         <a href="{% url 'perfil' %}" class="bloco-imagem">
+           <img src="{{ foto.foto.url }}">
+           {% else %}
+            <a href="{% url 'user' foto.usuario_id %}" class="bloco-imagem">
+              <img src="{{ foto.foto.url }}">
+              
+              {% endif %}
+            </a>
+          {% endfor %}
+      </div>
+    </div>
+  </body>
+
+{% endblock %}

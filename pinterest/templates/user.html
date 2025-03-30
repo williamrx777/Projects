@@ -1,0 +1,37 @@
+{% extends "login.html" %}
+
+{% block titulo %}
+Perfil - {{ user.username }}
+{% endblock %}
+
+{% block body %}
+<body>
+{% include "navbar.html" %}
+<div class="container">
+
+{% if form %}
+
+
+
+
+{% else %}
+<div class="bloco-add-img">
+    <h2>{{ user.username }} - Ver Perfil</h2>
+</div>
+{% endif %}
+
+
+
+<div class="conteudo">
+{% for foto in conta %}
+    <div class="bloco-imagem">
+      <img src="{{foto.foto.url}}" />
+    </div>
+{% endfor %}
+    </div>
+
+</div>
+
+
+</body>
+{% endblock %}

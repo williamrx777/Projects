@@ -1,0 +1,19 @@
+{% extends "login.html" %}
+
+{% block titulo %}
+Perfil - {{ request.user }}
+{% endblock %}
+
+{% block body %}
+<body>
+{% include "navbar.html" %}
+<form class="bloco-add-img"  method="post" enctype="multipart/form-data">{% csrf_token %} 
+  <p>Imagem antiga: </p><a href="{{conta.foto.url}}"><img src="{{conta.foto.url}}"></a>
+  <p>Modificar para: </p>
+  <input type="file" name="foto" class="botao-arquivo">
+  <input type="submit" value="submit" class="botao-login">
+</form>
+
+
+</body>
+{% endblock %}
