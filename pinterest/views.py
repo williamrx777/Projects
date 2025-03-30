@@ -4,6 +4,11 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.messages import constants
 from django.contrib import messages
 from .forms import FormCadastro
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect,reverse
+from .models import Conta
+from .forms import FormFoto
+from django.contrib.auth.models import User
 # Create your views here.
 
 def cadastro(request):
@@ -53,3 +58,57 @@ def logar(request):
 def sair(request):
     logout(request)
     return redirect('logar')
+
+@login_required
+def feed(request):
+    if request.method == "GET":
+        conta = Conta.objects.all()
+        return render(request, 'feed.html',{'foto':conta})
+@login_required
+def perfil(request):
+    if request.method == "GET":
+        form = FormFoto()
+        conta = Conta.objects.filter(usuario=request.user)
+        return render(request, 'perfil.html',{'conta':conta,'form':form})
+    elif request.method == "POST":
+        foto = request.FILES.get('foto')
+
+        conta = Conta(
+            usuario=request.user,
+            foto=foto
+        )
+
+        conta.save()
+
+        return redirect(reverse('perfil'))
+
+@login_required
+def user(request,usuario_id):
+    if request.method == "GET":
+        user = User.objects.get(pk=usuario_id)
+        conta = Conta.objects.filter(usuario=usuario_id)
+        return render(request, 'user.html',{'user':user,'conta':conta})
+
+@login_required
+def deletar(request):
+    if request.method == "GET":
+        conta = Conta.objects.filter(usuario=request.user)
+        return render(request, 'deletar.html',{'conta':conta})
+@login_required
+def excluir(request, id):
+    conta = Conta.objects.get(id=id)
+    if not conta.usuario == request.user:
+        return redirect('deletar')
+    conta.delete()
+    return redirect('deletar')
+@login_required
+def editar(request, id):
+    if request.method == "GET":
+        conta = Conta.objects.get(pk=id)
+        return render(request,'editar/change.html',{'conta':conta})
+    conta = Conta.objects.get(pk=id)
+    if request.method == "POST":
+        conta.foto = request.FILES.get('foto')
+
+        conta.save()
+        return redirect('perfil')
