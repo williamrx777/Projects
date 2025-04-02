@@ -11,10 +11,10 @@ from .forms import FormFoto
 from django.contrib.auth.models import User
 # Create your views here.
 
-def cadastro(request):
+def cadastroPinterest(request):
     if request.method == "GET":
         form = FormCadastro()
-        return render(request, 'cadastro.html',{'form':form})
+        return render(request, 'cadastroPinterest.html',{'form':form})
     elif request.method == "POST":
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -31,16 +31,16 @@ def cadastro(request):
             password=senha,
         )
         messages.add_message(request, constants.SUCCESS, 'Cadastrado com sucesso.')
-        return redirect('logar')
+        return redirect('loginPinterest')
     except:
         messages.add_message(request, constants.ERROR, 'Tente novamente.')
-        return redirect('cadastro')
+        return redirect('cadastroPinterest')
 
 
-def logar(request):
+def loginPinterest(request):
     if request.method == "GET":
         form = FormCadastro()
-        return render(request,'login.html',{'form':form})
+        return render(request,'loginPinterest.html',{'form':form})
     elif request.method == "POST":
         nome = request.POST.get('nome')
         senha = request.POST.get('senha')
@@ -55,9 +55,9 @@ def logar(request):
         else:
             return render(request, 'login.html')
 
-def sair(request):
+def sairPinterest(request):
     logout(request)
-    return redirect('logar')
+    return redirect('loginPinterest')
 
 @login_required
 def feed(request):

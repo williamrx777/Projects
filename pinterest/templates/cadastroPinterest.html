@@ -6,7 +6,7 @@ FakePinterest - Criar Conta
 
  {% block formulario %}
 
-        <form action="{% url 'cadastro' %}" method="POST" class="popup">
+        <form action="{% url 'cadastroPinterest' %}" method="POST" class="popup">
             {% csrf_token %}
           <svg
             height="40"
@@ -48,7 +48,7 @@ FakePinterest - Criar Conta
 
           <div class="div-botao">
               <input type="submit" value="Cadastro" class="botao-login">
-            <a href="{% url 'logar' %}" class="link-criarconta">Já tem uma conta? Faça Login</a>
+            <a href="{% url 'loginPinterest' %}" class="link-criarconta">Já tem uma conta? Faça Login</a>
           </div>
 
         </form>

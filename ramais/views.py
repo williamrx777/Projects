@@ -372,9 +372,9 @@ def logar(request):
         user = authenticate(username=nome, password=senha)
         if user is not None:
             login(request, user)
-            return redirect('/adm/')
+            return redirect('/ramais/')
         if request.user.is_authenticated:
-            return redirect('/adm/')
+            return redirect('/ramais/')
         else:
             msg = 'Usuario ou senha incorreto.'
             return render(request, 'login.html', {'msg':msg})
@@ -382,5 +382,5 @@ def logar(request):
 
 def sair(request):
     logout(request)
-    return redirect('/adm/login/')
+    return redirect('/ramais/login/')
     pass

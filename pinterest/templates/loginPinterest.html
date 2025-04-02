@@ -50,7 +50,7 @@
 
           {% block formulario %}
 
-        <form action="{% url 'logar' %}" method="POST" class="popup">
+        <form action="{% url 'loginPinterest' %}" method="POST" class="popup">
             {% csrf_token %}
           <svg
             height="40"
@@ -81,7 +81,7 @@
 
           <div class="div-botao">
               <input type="submit" value="Login" class="botao-login">
-            <a href="{% url 'cadastro' %}" class="link-criarconta">Não tem uma conta? Crie aqui</a>
+            <a href="{% url 'cadastroPinterest' %}" class="link-criarconta">Não tem uma conta? Crie aqui</a>
           </div>
 
         </form>

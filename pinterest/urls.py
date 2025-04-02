@@ -8,7 +8,7 @@ urlpatterns = [
     path('deletar/', views.deletar, name='deletar'),
     path('excluir/<int:id>', views.excluir, name='excluir'),
     path('editar/<int:id>/change', views.editar, name='editar'),
-    path('cadastro/', views.cadastro, name='cadastro'),
-    path('',views.logar, name='logar'),
-    path('sair/', views.sair, name='sair'),
+    path('cadastro/', views.cadastroPinterest, name='cadastroPinterest'),
+    path('login/',views.loginPinterest, name='loginPinterest'),
+    path('sair/', views.sairPinterest, name='sairPinterest'),
 ]
