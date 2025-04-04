@@ -53,7 +53,7 @@ def loginPinterest(request):
         if request.user.is_authenticated:
             return redirect('feed')
         else:
-            return render(request, 'login.html')
+            return render(request, 'loginPinterest.html')
 
 def sairPinterest(request):
     logout(request)
