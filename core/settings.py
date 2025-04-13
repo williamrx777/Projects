@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pinterest',
     'ramais',
+    'adota',
+    'divulga',
+    'usuario',
+   
 ]
 
 MIDDLEWARE = [

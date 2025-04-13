@@ -23,4 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pinterest/', include('pinterest.urls')),
     path('ramais/', include('ramais.urls')),
+    path('adota/', include('adota.urls')),
+    path('adote/divulga/', include('divulga.urls')),
+    path('adote/usuario/', include('usuario.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
