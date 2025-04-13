@@ -55,4 +55,4 @@ def adote_login(request):
 
 def adote_sair(request):
     logout(request)
-    return redirect('/auth/login')
+    return redirect('/adote/usuario/logar/')

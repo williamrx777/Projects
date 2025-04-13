@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'usuarios/css/cadastro.css' %}" rel="stylesheet">
-    <link href="{% static 'divulgar/css/novo_pet.css' %}" rel="stylesheet">
-    <link href="{% static 'divulgar/css/seus_pet.css' %}" rel="stylesheet">
-    <link href="{% static 'adotar/css/listar_pets.css' %}" rel="stylesheet">
+    <link href="{% static 'cadastro.css' %}" rel="stylesheet">
+    <link href="{% static 'novo_pet.css' %}" rel="stylesheet">
+    <link href="{% static 'seus_pet.css' %}" rel="stylesheet">
+    <link href="{% static 'listar_pets.css' %}" rel="stylesheet">
     </head>
     <body>
 
@@ -22,7 +22,7 @@
                     <a class="btn btn-outline-light" href="{% url 'seus_pets' %}">Seus pets</a>
                     <a class="btn btn-outline-light" href="{% url 'ver_pedido_adocao' %}">Ver pedido de adoção</a>
                     <a class="btn btn-outline-light" href="{% url 'listar_pets' %}">LIstar pets</a>
-                    
+                    <a class="btn btn-outline-light" href="{% url 'adote_sair' %}">Sair pets</a>
                 </div>
 
                 <div style="padding:60px" class="col-md">
