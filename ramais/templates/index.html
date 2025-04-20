@@ -58,7 +58,7 @@
                 <span id="hora"></span>
 
                 {% if user.is_authenticated %}
-                <a class="btn btn-outline-dark btn-sm ver-mais-link mt-2" href="{% url 'home' %}">Administração</a>
+                <a class="btn btn-outline-dark btn-sm ver-mais-link mt-2" href="{% url 'principal' %}">Administração</a>
                 {% else %}
                 <a class="btn btn-outline-danger btn-sm ver-mais-link mt-2" href="{% url 'logar' %}">Login</a>
                 {% endif %}
