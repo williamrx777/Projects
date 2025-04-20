@@ -51,8 +51,8 @@ def administracao(request):
 #     return render(request, 'todolist.html')
 
 @login_required
-def home(request):
-    return render(request,'home.html')
+def principal(request):
+    return render(request,'principal.html')
 @login_required
 def cadastroDepartamento(request):
 

@@ -8,7 +8,7 @@ urlpatterns = [
    
     # path('funcionarios/<int:id>', views.funcionarios, name='funcionarios'),
     # path('todolist/', views.todolist, name='todolist'),
-    path('home/', views.home, name='home'),
+    path('principal/', views.principal, name='principal'),
     path('cadastroDepartamento/', views.cadastroDepartamento, name='cadastroDepartamento'),
     path('cadastroFuncionario/', views.cadastroFuncionario, name='cadastroFuncionario'),
     path('cadastroAdministrador/', views.cadastroAdministrador, name='cadastroAdministrador'),
