@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'adota',
     'divulga',
     'usuario',
+    'produto',
    
 ]
 

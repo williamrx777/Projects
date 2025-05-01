@@ -27,4 +27,5 @@ urlpatterns = [
     path('adota/', include('adota.urls')),
     path('adote/divulga/', include('divulga.urls')),
     path('adote/usuario/', include('usuario.urls')),
+    path('produto/', include('produto.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

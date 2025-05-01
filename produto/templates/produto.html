@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitrine de Produtos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">Minha Loja</h1>
+      <nav class="space-x-6 hidden md:block">
+        <a href="#" class="text-gray-600 hover:text-indigo-600">Início</a>
+        <a href="#produtos" class="text-gray-600 hover:text-indigo-600">Produtos</a>
+        <a href="#depoimentos" class="text-gray-600 hover:text-indigo-600">Depoimentos</a>
+        <a href="#" class="text-white bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-700 transition">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-indigo-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-700">Descubra produtos incríveis</h2>
+      <p class="text-lg text-gray-600 mb-8">Qualidade, estilo e preço justo em um só lugar.</p>
+      <a href="#produtos" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg shadow hover:bg-indigo-700 transition">Ver Produtos</a>
+    </div>
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtos" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">Nossos Produtos</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for produto in produtos %}
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+          <img src="{{ produto.imagem }}" alt="{{ produto.nome }}" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <h4 class="text-xl font-semibold mb-2 text-indigo-700">{{ produto.nome }}</h4>
+            <p class="text-gray-600 mb-3">{{ produto.descricao }}</p>
+            <span class="block text-indigo-600 font-bold text-lg mb-4">R$ {{ produto.preco|floatformat:2 }}</span>
+            <a href="#" class="block text-center bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Comprar</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section id="depoimentos" class="bg-indigo-50 py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold text-gray-800 mb-10">O que dizem nossos clientes</h3>
+      <div class="space-y-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-gray-700 italic">"Produto maravilhoso, chegou rápido e a qualidade é excelente!"</p>
+          <span class="mt-4 block font-bold text-indigo-600">— Camila Ferreira</span>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-gray-700 italic">"Adorei! Comprarei novamente com certeza!"</p>
+          <span class="mt-4 block font-bold text-indigo-600">— Marcos Souza</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>&copy; 2025 Minha Loja. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
