@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,8 +27,8 @@
   <!-- Hero -->
   <section class="bg-indigo-50 py-20">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-700">Descubra produtos incríveis</h2>
-      <p class="text-lg text-gray-600 mb-8">Qualidade, estilo e preço justo em um só lugar.</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-700">Produtos em Destaque</h2>
+      <p class="text-lg text-gray-600 mb-8">Explore nossa seleção com qualidade e preços incríveis.</p>
       <a href="#produtos" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg shadow hover:bg-indigo-700 transition">Ver Produtos</a>
     </div>
   </section>
@@ -39,39 +40,29 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for produto in produtos %}
-        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-          <img src="{{ produto.imagem }}" alt="{{ produto.nome }}" class="w-full h-56 object-cover">
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="w-full h-56 object-cover">
           <div class="p-4">
             <h4 class="text-xl font-semibold mb-2 text-indigo-700">{{ produto.nome }}</h4>
-            <p class="text-gray-600 mb-3">{{ produto.descricao }}</p>
+            <p class="text-gray-600 mb-3 line-clamp-3">{{ produto.descricao|truncatewords:20 }}</p>
             <span class="block text-indigo-600 font-bold text-lg mb-4">R$ {{ produto.preco|floatformat:2 }}</span>
-            <a href="#" class="block text-center bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Comprar</a>
+            {% if produto.estoque > 0 %}
+              <a href="#" class="block text-center bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Comprar</a>
+            {% else %}
+              <span class="block text-center text-red-500 font-semibold">Esgotado</span>
+            {% endif %}
           </div>
         </div>
+        {% empty %}
+          <p class="col-span-3 text-center text-gray-600">Nenhum produto disponível no momento.</p>
         {% endfor %}
       </div>
+      
     </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section id="depoimentos" class="bg-indigo-50 py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold text-gray-800 mb-10">O que dizem nossos clientes</h3>
-      <div class="space-y-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="text-gray-700 italic">"Produto maravilhoso, chegou rápido e a qualidade é excelente!"</p>
-          <span class="mt-4 block font-bold text-indigo-600">— Camila Ferreira</span>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="text-gray-700 italic">"Adorei! Comprarei novamente com certeza!"</p>
-          <span class="mt-4 block font-bold text-indigo-600">— Marcos Souza</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <!-- Rodapé -->
+  <footer class="bg-gray-800 text-white py-8 mt-20">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p>&copy; 2025 Minha Loja. Todos os direitos reservados.</p>
     </div>
